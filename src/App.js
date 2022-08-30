@@ -5,9 +5,13 @@ import AddPost from './components/pages/AddPost/AddPost';
 import Post from './components/pages/Post/Post';
 import About from './components/pages/About/About';
 import ErrorPage from './components/pages/ErrorPage/ErrorPage';
+import Header from './components/views/Header/Header';
+import Footer from './components/views/Footer/Footer';
+import {Container} from 'react-bootstrap';
 function App() {
   return (
-    <div>
+    <Container>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/post/:postId" element={<Post />} />
@@ -16,7 +20,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path='*' element={<ErrorPage />}/>
       </Routes>
-    </div>
+      <Footer />
+    </Container>
   );
 }
 
