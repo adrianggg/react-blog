@@ -1,6 +1,7 @@
+
 const EditPost = ()=>{
     return (
-        <h1>Edit Post</h1>
+        <h1>Edit POst</h1>
     );
 };
 
