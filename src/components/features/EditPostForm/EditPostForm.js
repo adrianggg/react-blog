@@ -7,7 +7,6 @@ import { editPost } from "../../../redux/postsRedux";
 const EditPostForm = ()=>{
     const { postId } = useParams();
     const post = useSelector(state => getPostById(state,postId));
-    console.log(post.title);
     const dispatch = useDispatch();
     const id = postId
     const handleSubmit = post=>{

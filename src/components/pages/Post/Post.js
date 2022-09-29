@@ -33,12 +33,12 @@ const Post = ()=>{
             <Row className="d-flex justify-content-center align-items-center">
                 <Col lg='6' className="d-flex flex-column">
                     <p className="mb-0"><strong>Author: </strong>{post.author}</p>
-                    <p ><strong>Date: </strong>{post.publishedDate}</p>
+                    <p ><strong>Date: </strong>{post.publishedDate.toLocaleDateString()}</p>
                 </Col>
             </Row>
             <Row className="d-flex justify-content-center align-items-center">
                 <Col lg='6'>
-                    <p>{post.content}</p>
+                    <p dangerouslySetInnerHTML={{ __html: post.content }} />
                 </Col>
             </Row>
             <ModalPost  show={show} handleClose={handleClose} id={postId}/>

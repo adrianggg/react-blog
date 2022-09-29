@@ -11,7 +11,7 @@ const CardPost = ({post}) => {
         <Card.Body>
             <Card.Title>{post.title}</Card.Title>
             <Card.Subtitle><strong>Author:</strong> {post.author}</Card.Subtitle>
-            <Card.Subtitle><strong>Date:</strong> {post.publishedDate}</Card.Subtitle>
+            <Card.Subtitle><strong>Date:</strong> {post.publishedDate.toLocaleDateString()}</Card.Subtitle>
             <Card.Text>{post.shortDescription}</Card.Text>
             <Button as={NavLink} to={`/post/${post.id}`} variant="primary">Read more</Button>
         </Card.Body>
