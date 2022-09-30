@@ -10,6 +10,7 @@ const NavBar = ()=>{
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Nav className="justify-content-end flex-grow-1 pe-3">
             <Nav.Link as={NavLink} to="/">Home</Nav.Link>
+            <Nav.Link as={NavLink} to="/categories">Categories</Nav.Link>
             <Nav.Link as={NavLink} to="/about">About</Nav.Link>
           </Nav>
         </Container>

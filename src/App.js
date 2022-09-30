@@ -8,6 +8,9 @@ import ErrorPage from './components/pages/ErrorPage/ErrorPage';
 import Header from './components/views/Header/Header';
 import Footer from './components/views/Footer/Footer';
 import {Container} from 'react-bootstrap';
+import Categories from './components/pages/Categories/Categories';
+import CategoryPosts from './components/pages/CategoryPosts/CategoryPosts';
+
 function App() {
   return (
     <Container>
@@ -18,6 +21,8 @@ function App() {
         <Route path="/post/add" element={<AddPost />} />
         <Route path='/post/edit/:postId' element={<EditPost />}/>
         <Route path="/about" element={<About />} />
+        <Route path="/categories" element={<Categories />}/>
+        <Route path="/categories/:categoryId" element={<CategoryPosts/>}/>
         <Route path='*' element={<ErrorPage />}/>
       </Routes>
       <Footer />

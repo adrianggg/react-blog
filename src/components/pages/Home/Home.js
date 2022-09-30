@@ -14,7 +14,7 @@ const Home = ()=>{
                 <Button as={NavLink} to="/post/add" variant="outline-info">Add post</Button>
             </div>
             <Row className='d-flex flex-wrap justify-content-around align-items-center'>
-              {posts.map(post => <CardPost key={post.id} post={post}/> )}
+              {posts.map(post => <CardPost key={post.id} {...post}/> )}
             </Row>
         </Container>
     );

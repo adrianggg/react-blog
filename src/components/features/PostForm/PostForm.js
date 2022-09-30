@@ -13,26 +13,35 @@ import "react-datepicker/dist/react-datepicker.css";
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-const PostForm = ({action, actionName, titlePost , publishedDatePost,shortDescriptionPost, contentPost , authorPost })=>{
+import { useSelector } from 'react-redux';
+import { getAllCategories } from '../../../redux/postsRedux';
+import shortid from 'shortid';
+const PostForm = ({action, actionName, titlePost , publishedDatePost,shortDescriptionPost,categoryPost, contentPost , authorPost })=>{
     const [title,setTitle] = useState(titlePost === undefined ? '' : titlePost);
     const [author,setAuthor] = useState(authorPost === undefined ? '' : authorPost);
     const [publishedDate,setpublishedDate]= useState(publishedDatePost === undefined ? '' : new Date(publishedDatePost));
     const [shortDescription,setshortDescription] =useState(shortDescriptionPost === undefined ? '' : shortDescriptionPost);
     const [content,setContent] = useState(contentPost === undefined ? '' : contentPost);
+    const [category,setCategory]  = useState(categoryPost === undefined ? '' : categoryPost);
     const navigate = useNavigate();
 
     const { register, handleSubmit: validate, formState: { errors } } = useForm();
-    const [contentError,setContentError] = useState(false);
     const [dateError, setDateError] = useState(false);
-    
+    const [contentError,setContentError] = useState(false);
+    const categories = useSelector(getAllCategories);
     const handleSubmit = () => {
         setContentError(!content)
-        setDateError(!publishedDate)
+        console.log(dateError);
+        setDateError(publishedDate);
+        console.log(dateError);
         if(content && publishedDate) {
-          action({ title, author, publishedDate, shortDescription, content });
+          action({ title, author, publishedDate, shortDescription,category, content });
           navigate('/');
         }
       };
+    const handleSelect = e=>{
+        setCategory(e.target.value);
+    }
      
     return (
         <Form onSubmit={validate(handleSubmit)}>
@@ -67,6 +76,15 @@ const PostForm = ({action, actionName, titlePost , publishedDatePost,shortDescri
             <DatePicker selected={publishedDate} onChange={date => setpublishedDate(date)} dateFormat="dd/MM/yyyy" />
             {!dateError && <small className="d-block form-text text-danger mt-2">Required date</small>}
         </Form.Group>
+        </Row>
+        <Row className="mb-3">
+            <Form.Group as={Col} lg='8'>
+            <Form.Select onChange={handleSelect} value={category}>
+                <option  key={shortid()}>Select category</option>
+                {categories.map(categoryRender=> <option key={shortid()}>{categoryRender}</option>)}
+                 
+            </Form.Select>
+            </Form.Group>
         </Row>
         <Row className="mb-3">
             <Form.Group as={Col} lg='8'>

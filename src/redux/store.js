@@ -3,6 +3,7 @@ import initialState from './initialState';
 import postsReducer from './postsRedux';
 const subreducers = {
     posts: postsReducer,
+    categories: postsReducer
 }
 
 const reducer = combineReducers(subreducers);

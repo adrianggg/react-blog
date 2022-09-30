@@ -15,7 +15,7 @@ const EditPostForm = ()=>{
     return (
         <PostForm action={handleSubmit} actionName='Edit Post'
         publishedDatePost={post.publishedDate} shortDescriptionPost={post.shortDescription} contentPost={post.content}
-        titlePost={post.title} authorPost={post.author} 
+        titlePost={post.title} authorPost={post.author} categoryPost={post.category}
          />
     )
 }

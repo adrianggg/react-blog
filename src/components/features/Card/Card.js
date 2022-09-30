@@ -3,17 +3,18 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/esm/Col';
 import { NavLink } from "react-router-dom";
 
-const CardPost = ({post}) => {
+const CardPost = ({title,author,publishedDate,shortDescription,category,id}) => {
     
   return (
     <Col>
         <Card style={{ width: '22rem' }}>
         <Card.Body>
-            <Card.Title>{post.title}</Card.Title>
-            <Card.Subtitle><strong>Author:</strong> {post.author}</Card.Subtitle>
-            <Card.Subtitle><strong>Date:</strong> {post.publishedDate.toLocaleDateString()}</Card.Subtitle>
-            <Card.Text>{post.shortDescription}</Card.Text>
-            <Button as={NavLink} to={`/post/${post.id}`} variant="primary">Read more</Button>
+            <Card.Title>{title}</Card.Title>
+            <Card.Subtitle><strong>Author:</strong> {author}</Card.Subtitle>
+            <Card.Subtitle><strong>Date:</strong> {publishedDate.toLocaleDateString()}</Card.Subtitle>
+            <Card.Subtitle><strong>Category:</strong> {category}</Card.Subtitle>
+            <Card.Text>{shortDescription}</Card.Text>
+            <Button as={NavLink} to={`/post/${id}`} variant="primary">Read more</Button>
         </Card.Body>
         </Card>
     </Col>
